@@ -185,24 +185,27 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:linear-gradient(160d
     </div>
 
     <div class="wsp-box">
-      <div class="wsp-title">&#128241; Envío de documentos por WhatsApp</div>
+      <div class="wsp-title">&#128241; Envío por WhatsApp — 2 pasos simples</div>
       <div class="wsp-pasos">
-        Al enviar este formulario se abrirá <strong>WhatsApp</strong> con tus datos listos. Solo debes adjuntar y enviar las <strong>3 fotos</strong>:<br><br>
-        <span class="wsp-num">1</span> Copia del <strong>DNI del Varón</strong><br>
-        <span class="wsp-num">2</span> Copia del <strong>DNI de la Mujer</strong><br>
-        <span class="wsp-num">3</span> <strong>Comprobante de pago</strong><br><br>
-        <span style="font-size:12px;color:#3a6a55;">&#9888; Para adjuntar: toca el <strong>clip 📎</strong> en WhatsApp, selecciona <strong>Galería</strong> y elige tus fotos.</span>
+        Al hacer clic en el botón se abrirá <strong>WhatsApp</strong>. El proceso es:<br><br>
+        <span class="wsp-num">1</span> <strong>Envía el mensaje</strong> con tus datos que ya aparece escrito &#128526;<br>
+        <span class="wsp-num">2</span> Luego adjunta y envía las <strong>3 fotos</strong>:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&#128247; DNI del <strong>Varón</strong><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&#128247; DNI de la <strong>Mujer</strong><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&#128179; <strong>Comprobante de pago</strong><br><br>
+        <span style="font-size:12px;color:#3a6a55;">&#9888; Para adjuntar fotos: toca el <strong>clip 📎</strong> → <strong>Galería</strong> → selecciona la foto → envía.</span>
       </div>
     </div>
 
     <div class="submit-row">
       <button type="button" class="submit-btn" id="btn-enviar" onclick="enviarInscripcion()">
-        <i style="font-style:normal;">&#128241;</i> Enviar por WhatsApp
+        <i style="font-style:normal;">&#128241;</i> Enviar datos por WhatsApp
       </button>
     </div>
     <div class="success-msg" id="success-msg">
-      &#9989; <strong>¡WhatsApp se ha abierto!</strong><br>
-      Ahora adjunta tus 3 fotos (DNI del varón, DNI de la mujer y comprobante) tocando el clip 📎 y envíalas. El comité confirmará tu inscripción.
+      &#9989; <strong>¡WhatsApp se ha abierto con tus datos!</strong><br><br>
+      <strong>Paso 1:</strong> Toca el botón &#9654; para enviar el mensaje con tus datos.<br>
+      <strong>Paso 2:</strong> Adjunta tus 3 fotos tocando el clip 📎 (DNI varón, DNI mujer, comprobante) y envíalas.
     </div>
 
   </div>
@@ -258,7 +261,8 @@ function enviarInscripcion() {
   texto += '🏫 *Academia/Club:* ' + academia + '\n\n';
   texto += '📎 *Adjunto las 3 fotos:* DNI del varón, DNI de la mujer y comprobante de pago.';
 
-  var url = 'https://wa.me/51920557004?text=' + encodeURIComponent(texto);
+  // Send text message first
+  var url = 'https://api.whatsapp.com/send?phone=51920557004&text=' + encodeURIComponent(texto);
   window.open(url, '_blank');
 
   document.getElementById('success-msg').style.display = 'block';
