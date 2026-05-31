@@ -267,6 +267,15 @@ function enviarInscripcion() {
 
   document.getElementById('success-msg').style.display = 'block';
   window.scrollTo({ top: document.getElementById('success-msg').offsetTop - 40, behavior: 'smooth' });
+
+  setTimeout(function() {
+    document.getElementById('success-msg').style.display = 'none';
+    document.getElementById('formBody').querySelectorAll('input').forEach(function(i){
+      i.value = ''; i.classList.remove('error');
+    });
+    document.getElementById('categoria').selectedIndex = 0;
+    document.getElementById('cat-note').style.display = 'none';
+  }, 4000);
 }
 </script>
 </body>
